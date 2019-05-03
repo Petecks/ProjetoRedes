@@ -3,18 +3,16 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QPixmap
 import sys
 import os
-from multiprocessing import Pool
+from multiprocessing import Process
+from clientoriginal import client_UDP
+from serveroriginal import server_UDP
 
-processes = ('serveroriginal.py','clientoriginal.py')
-
-
-def run_process(process):
-    os.system('python {}'.format(process))
 
 
 class Receipt(QMainWindow):
     protocol = ""
     check = ""
+    namefile = ""
     def __init__(self):
         super().__init__()
         self.ui = None
@@ -31,8 +29,13 @@ class Receipt(QMainWindow):
 
     def send_to_host(self):
         print("enviar host")
-        pool = Pool(processes=2)
-        pool.map(run_process, processes)
+        if __name__ == '__main__':
+            q = Process(target=server_UDP, args= (self.namefile,))
+            p = Process(target=client_UDP, args= (self.namefile,))
+            q.start()
+            p.start()
+            q.join()
+            p.join()
         self.recivefile()
 
     def checksum_check(self):
@@ -56,13 +59,14 @@ class Receipt(QMainWindow):
 
     def openfile(self):
         file,okpressed = QInputDialog.getText(self,"nome do arquivo","entrada:")
+        self.namefile = file
         readtweets = open(file, "r")
         tweetlist = readtweets.read()
         self.textEdit.setText(tweetlist)
         readtweets.close()
 
     def recivefile(self):
-        readtweets = open("README.txt", "r")
+        readtweets = open("response" + self.namefile, "r")
         tweetlist = readtweets.read()
         self.textEdit_2.setText(tweetlist)
 
