@@ -14,5 +14,7 @@ localizado no diretório NetConnect, e então digite:
   Rotina de Exemplo:  
   selecionar UDP ou TCP;  
   selecionar CRC ou Checksum;  
-  selecionar o tipo de arquivo (Modo de arquivo) a ser enviado;
-  clilcar em Enviar para o Host.
+  selecionar o tipo de arquivo (Modo de arquivo, Ex: data) a ser enviado;  
+  digitar o nome do arquivo( utilize ¨texto.txt¨ como exemplo de base):  
+  clilcar em Enviar para o Host. Caso queira enviar para um IP diferente, selecione a outra janela.
+  Nem todas as funções podem estar funcionando corretamente, estão apresentando algumas singularidades.
