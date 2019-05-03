@@ -10,3 +10,9 @@ o programa basa foi implementado no QT creator,
 Para utilizar do código, execute o arquivo "main.py",  
 localizado no diretório NetConnect, e então digite:
 " ~ python3 main.py " para sua execução.
+  
+  Rotina de Exemplo:  
+  selecionar UDP ou TCP;  
+  selecionar CRC ou Checksum;  
+  selecionar o tipo de arquivo (Modo de arquivo) a ser enviado;
+  clilcar em Enviar para o Host.
